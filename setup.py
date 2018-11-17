@@ -20,7 +20,6 @@ INSTALL_REQUIRES = [
 ]
 
 EXTRAS_DEV_TESTFILES_COMMON = [
-    "mock",
 ]
 
 EXTRAS_DEV_LINT = [
