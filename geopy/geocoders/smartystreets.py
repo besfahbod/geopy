@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 
-from geopy.exc import ConfigurationError, GeocoderQuotaExceeded
+from geopy.exc import GeocoderQuotaExceeded
 from geopy.geocoders.base import DEFAULT_SENTINEL, Geocoder
 from geopy.location import Location
 from geopy.util import logger
@@ -22,7 +22,6 @@ class LiveAddress(Geocoder):
             auth_id,
             auth_token,
             candidates=1,
-            scheme='https',
             timeout=DEFAULT_SENTINEL,
             proxies=DEFAULT_SENTINEL,
             user_agent=None,
@@ -38,12 +37,6 @@ class LiveAddress(Geocoder):
         :param int candidates: An integer between 1 and 10 indicating the max
             number of candidate addresses to return if a valid address
             could be found.
-
-        :param str scheme: Must be ``https``.
-
-            .. deprecated:: 1.14.0
-               Don't use this parameter, it's going to be removed in
-               geopy 2.0.
 
         :param int timeout:
             See :attr:`geopy.geocoders.options.default_timeout`.
@@ -63,17 +56,12 @@ class LiveAddress(Geocoder):
         """
         super().__init__(
             format_string=format_string,
-            # The `scheme` argument is present for the legacy reasons only.
-            # If a custom value has been passed, it should be validated.
-            # Otherwise use `https` instead of the `options.default_scheme`.
-            scheme=(scheme or 'https'),
+            scheme='https',
             timeout=timeout,
             proxies=proxies,
             user_agent=user_agent,
             ssl_context=ssl_context,
         )
-        if self.scheme != "https":
-            raise ConfigurationError("LiveAddress now requires `https`.")
         self.auth_id = auth_id
         self.auth_token = auth_token
         if candidates:
