@@ -10,9 +10,6 @@ class OpenMapQuest(Nominatim):
 
     Documentation at:
         https://developer.mapquest.com/documentation/open/
-
-    .. versionchanged:: 1.17.0
-       OpenMapQuest now extends the Nominatim class.
     """
 
     geocode_path = '/nominatim/v1/search'
@@ -36,10 +33,6 @@ class OpenMapQuest(Nominatim):
 
         :param str api_key: API key provided by MapQuest, required.
 
-            .. versionchanged:: 1.12.0
-               OpenMapQuest now requires an API key. Using an empty key will
-               result in a :class:`geopy.exc.ConfigurationError`.
-
         :param str format_string:
             See :attr:`geopy.geocoders.options.default_format_string`.
 
@@ -48,16 +41,10 @@ class OpenMapQuest(Nominatim):
         :param view_box: Coordinates to restrict search within.
             Example: ``[Point(22, 180), Point(-22, -180)]``.
 
-            .. versionadded:: 1.17.0
-
         :param bool bounded: Restrict the results to only items contained
             within the bounding view_box.
 
-            .. versionadded:: 1.17.0
-
         :param str country_bias: Bias results to this country.
-
-            .. versionadded:: 1.17.0
 
         :param int timeout:
             See :attr:`geopy.geocoders.options.default_timeout`.
@@ -68,21 +55,15 @@ class OpenMapQuest(Nominatim):
         :param str domain: Domain where the target Nominatim service
             is hosted.
 
-            .. versionadded:: 1.17.0
-
         :param str scheme:
             See :attr:`geopy.geocoders.options.default_scheme`.
 
         :param str user_agent:
             See :attr:`geopy.geocoders.options.default_user_agent`.
 
-            .. versionadded:: 1.12.0
-
         :type ssl_context: :class:`ssl.SSLContext`
         :param ssl_context:
             See :attr:`geopy.geocoders.options.default_ssl_context`.
-
-            .. versionadded:: 1.14.0
         """
         super().__init__(
             format_string=format_string,

@@ -33,8 +33,6 @@ class LiveAddress(Geocoder):
 
         :param str auth_id: Valid `Auth ID` from SmartyStreets.
 
-            .. versionadded:: 1.5.0
-
         :param str auth_token: Valid `Auth Token` from SmartyStreets.
 
         :param int candidates: An integer between 1 and 10 indicating the max
@@ -47,10 +45,6 @@ class LiveAddress(Geocoder):
                Don't use this parameter, it's going to be removed in
                geopy 2.0.
 
-            .. versionchanged:: 1.8.0
-               LiveAddress now requires `https`. Specifying `scheme=http` will
-               result in a :class:`geopy.exc.ConfigurationError`.
-
         :param int timeout:
             See :attr:`geopy.geocoders.options.default_timeout`.
 
@@ -60,18 +54,12 @@ class LiveAddress(Geocoder):
         :param str user_agent:
             See :attr:`geopy.geocoders.options.default_user_agent`.
 
-            .. versionadded:: 1.12.0
-
         :param str format_string:
             See :attr:`geopy.geocoders.options.default_format_string`.
-
-            .. versionadded:: 1.14.0
 
         :type ssl_context: :class:`ssl.SSLContext`
         :param ssl_context:
             See :attr:`geopy.geocoders.options.default_ssl_context`.
-
-            .. versionadded:: 1.14.0
         """
         super().__init__(
             format_string=format_string,

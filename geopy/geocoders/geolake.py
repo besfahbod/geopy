@@ -16,8 +16,6 @@ class Geolake(Geocoder):
 
     Terms of Service at:
         https://geolake.com/terms-of-use
-
-    .. versionadded:: 1.18.0
     """
 
     structured_query_params = {

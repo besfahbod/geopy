@@ -56,18 +56,12 @@ class GeoNames(Geocoder):
         :param str user_agent:
             See :attr:`geopy.geocoders.options.default_user_agent`.
 
-            .. versionadded:: 1.12.0
-
         :param str format_string:
             See :attr:`geopy.geocoders.options.default_format_string`.
-
-            .. versionadded:: 1.14.0
 
         :type ssl_context: :class:`ssl.SSLContext`
         :param ssl_context:
             See :attr:`geopy.geocoders.options.default_ssl_context`.
-
-            .. versionadded:: 1.14.0
 
         :param str scheme:
             See :attr:`geopy.geocoders.options.default_scheme`. Note that
@@ -77,7 +71,6 @@ class GeoNames(Geocoder):
             This parameter is present to make it possible to switch to
             `https` once GeoNames adds support for it.
 
-            .. versionadded:: 1.18.0
         """
         super().__init__(
             format_string=format_string,
@@ -153,8 +146,6 @@ class GeoNames(Geocoder):
         """
         Return an address by location point.
 
-            .. versionadded:: 1.2.0
-
         :param query: The coordinates for which you wish to obtain the
             closest human-readable addresses.
         :type query: :class:`geopy.point.Point`, list or tuple of ``(latitude,
@@ -163,12 +154,6 @@ class GeoNames(Geocoder):
         :param bool exactly_one: Return one result or a list of results, if
             available.
 
-            .. versionchanged:: 1.14.0
-               Default value for ``exactly_one`` was ``False``, which differs
-               from the conventional default across geopy. Please always pass
-               this argument explicitly, otherwise you would get a warning.
-               In geopy 2.0 the default value will become ``True``.
-
         :param int timeout: Time, in seconds, to wait for the geocoding service
             to respond before raising a :class:`geopy.exc.GeocoderTimedOut`
             exception. Set this only if you wish to override, on this call
@@ -176,22 +161,16 @@ class GeoNames(Geocoder):
 
         :param str feature_code: A GeoNames feature code
 
-            .. versionadded:: 1.18.0
-
         :param str lang: language of the returned ``name`` element (the pseudo
             language code 'local' will return it in local language)
             Full list of supported languages can be found here:
             https://www.geonames.org/countries/
-
-            .. versionadded:: 1.18.0
 
         :param str find_nearby_type: A flag to switch between different
             GeoNames API endpoints. The default value is ``findNearbyPlaceName``
             which returns the closest populated place. Another currently
             implemented option is ``findNearby`` which returns
             the closest toponym for the lat/lng query.
-
-            .. versionadded:: 1.18.0
 
         :rtype: ``None``, :class:`geopy.location.Location` or a list of them, if
             ``exactly_one=False``.
@@ -266,8 +245,6 @@ class GeoNames(Geocoder):
     def reverse_timezone(self, query, timeout=DEFAULT_SENTINEL):
         """
         Find the timezone for a point in `query`.
-
-        .. versionadded:: 1.18.0
 
         :param query: The coordinates for which you want a timezone.
         :type query: :class:`geopy.point.Point`, list or tuple of (latitude,

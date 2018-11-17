@@ -73,22 +73,14 @@ class GoogleV3(Geocoder):
         :param str user_agent:
             See :attr:`geopy.geocoders.options.default_user_agent`.
 
-            .. versionadded:: 1.12.0
-
         :param str format_string:
             See :attr:`geopy.geocoders.options.default_format_string`.
-
-            .. versionadded:: 1.14.0
 
         :type ssl_context: :class:`ssl.SSLContext`
         :param ssl_context:
             See :attr:`geopy.geocoders.options.default_ssl_context`.
 
-            .. versionadded:: 1.14.0
-
         :param str channel: If using premier, the channel identifier.
-
-            .. versionadded:: 1.12.0
         """
         super().__init__(
             format_string=format_string,
@@ -175,9 +167,6 @@ class GoogleV3(Geocoder):
                 >>> g.geocode(components={"city": "Paris", "country": "FR"})
                 Location(France, (46.227638, 2.213749, 0.0))
 
-            .. versionchanged:: 1.14.0
-               Now ``query`` is optional if ``components`` param is set.
-
         :param bool exactly_one: Return one result or a list of results, if
             available.
 
@@ -191,12 +180,6 @@ class GoogleV3(Geocoder):
         :param bounds: The bounding box of the viewport within which
             to bias geocode results more prominently.
             Example: ``[Point(22, 180), Point(-22, -180)]``.
-
-            .. versionchanged:: 1.17.0
-                Previously the only supported format for bounds was a
-                list like ``[latitude, longitude, latitude, longitude]``.
-                This format is now deprecated in favor of a list/tuple
-                of a pair of geopy Points and will be removed in geopy 2.0.
 
         :param str region: The region code, specified as a ccTLD
             ("top-level domain") two-character value.
@@ -272,12 +255,6 @@ class GoogleV3(Geocoder):
         :param bool exactly_one: Return one result or a list of results, if
             available.
 
-            .. versionchanged:: 1.14.0
-               Default value for ``exactly_one`` was ``False``, which differs
-               from the conventional default across geopy. Please always pass
-               this argument explicitly, otherwise you would get a warning.
-               In geopy 2.0 the default value will become ``True``.
-
         :param int timeout: Time, in seconds, to wait for the geocoding service
             to respond before raising a :class:`geopy.exc.GeocoderTimedOut`
             exception. Set this only if you wish to override, on this call
@@ -321,8 +298,6 @@ class GoogleV3(Geocoder):
     def reverse_timezone(self, query, at_time=None, timeout=DEFAULT_SENTINEL):
         """
         Find the timezone a point in `query` was in for a specified `at_time`.
-
-        .. versionadded:: 1.18.0
 
         :param query: The coordinates for which you want a timezone.
         :type query: :class:`geopy.point.Point`, list or tuple of (latitude,

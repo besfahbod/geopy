@@ -9,9 +9,6 @@ class PickPoint(Nominatim):
 
     Documentation at:
        https://pickpoint.io/api-reference
-
-    .. versionadded:: 1.13.0
-
     """
 
     geocode_path = '/v1/forward'
@@ -44,12 +41,6 @@ class PickPoint(Nominatim):
         :param view_box: Coordinates to restrict search within.
             Example: ``[Point(22, 180), Point(-22, -180)]``.
 
-            .. versionchanged:: 1.17.0
-                Previously view_box could be a list of 4 strings or numbers
-                in the format of ``[longitude, latitude, longitude, latitude]``.
-                This format is now deprecated in favor of a list/tuple
-                of a pair of geopy Points and will be removed in geopy 2.0.
-
         :param string country_bias: Bias results to this country.
 
         :param bool bounded: Restrict the results to only items contained
@@ -73,8 +64,6 @@ class PickPoint(Nominatim):
         :type ssl_context: :class:`ssl.SSLContext`
         :param ssl_context:
             See :attr:`geopy.geocoders.options.default_ssl_context`.
-
-            .. versionadded:: 1.14.0
         """
 
         super().__init__(

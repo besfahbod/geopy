@@ -13,8 +13,6 @@ class MapBox(Geocoder):
 
     Documentation at:
         https://www.mapbox.com/api-documentation/
-
-    .. versionadded:: 1.17.0
     """
 
     api_path = '/geocoding/v5/mapbox.places/%(query)s.json/'
