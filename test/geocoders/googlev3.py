@@ -5,7 +5,7 @@ from datetime import datetime
 from pytz import timezone
 
 from geopy import exc
-from geopy.compat import parse_qs, u, urlparse
+from geopy.compat import parse_qs, urlparse
 from geopy.geocoders import GoogleV3
 from geopy.point import Point
 from test.geocoders.util import GeocoderTestBase, env
@@ -148,7 +148,7 @@ class GoogleV3TestCase(GeocoderTestBase):
         GoogleV3.geocode unicode
         """
         self.geocode_run(
-            {"query": u("\u6545\u5bab")},
+            {"query": "\u6545\u5bab"},
             {"latitude": 39.916, "longitude": 116.390},
         )
 

@@ -4,13 +4,12 @@ import unittest
 import pytz
 import pytz.tzinfo
 
-from geopy.compat import u
 from geopy.timezone import Timezone, from_timezone_name
 
 
 class TimezoneTestCase(unittest.TestCase):
 
-    timezone_name = u("Europe/Moscow")
+    timezone_name = "Europe/Moscow"
 
     def test_create_from_timezone_name(self):
         raw = dict(foo="bar")
