@@ -224,18 +224,6 @@ class Nominatim(Geocoder):
         # `viewbox` apparently replaces `view_box`
         if self.view_box:
             viewbox = self.view_box
-            if len(viewbox) == 4:
-                warnings.warn(
-                    '%s `view_box` format of '
-                    '`[longitude, latitude, longitude, latitude]` is now '
-                    'deprecated and will be not supported in geopy 2.0. '
-                    'Use `[Point(latitude, longitude), Point(latitude, longitude)]` '
-                    'instead.' % type(self).__name__,
-                    DeprecationWarning,
-                    stacklevel=2
-                )
-                lon1, lat1, lon2, lat2 = viewbox
-                viewbox = [[lat1, lon1], [lat2, lon2]]
             params['viewbox'] = self._format_bounding_box(
                 viewbox, "%(lon1)s,%(lat1)s,%(lon2)s,%(lat2)s")
 

@@ -1,5 +1,4 @@
 import unittest
-import warnings
 from abc import ABC, abstractmethod
 
 from geopy.geocoders import Pelias
@@ -48,17 +47,6 @@ class BasePeliasTestCase(ABC):
             {"query": "moscow"},  # Idaho USA
             {"latitude": 46.7323875, "longitude": -117.0001651},
         )
-
-    def test_boundary_rect_deprecated(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            self.geocoder = self.make_geocoder(
-                boundary_rect=[-130.1, 44.1, -100.9, 50.1])
-            self.geocode_run(
-                {"query": "moscow"},  # Idaho USA
-                {"latitude": 46.7323875, "longitude": -117.0001651},
-            )
-            self.assertEqual(1, len(w))
 
 
 @unittest.skipUnless(
