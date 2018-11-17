@@ -1,8 +1,7 @@
 import collections.abc
-import warnings
 from urllib.parse import urlencode
 
-from geopy.exc import GeocoderQueryError
+from geopy.exc import ConfigurationError, GeocoderQueryError
 from geopy.geocoders.base import _DEFAULT_USER_AGENT, DEFAULT_SENTINEL, Geocoder
 from geopy.location import Location
 from geopy.util import logger
@@ -106,7 +105,7 @@ class Nominatim(Geocoder):
 
         if (self.domain == _DEFAULT_NOMINATIM_DOMAIN
                 and self.headers['User-Agent'] == _DEFAULT_USER_AGENT):
-            warnings.warn(
+            raise ConfigurationError(
                 'Using Nominatim with the default "%s" `user_agent` is '
                 'strongly discouraged, as it violates Nominatim\'s ToS '
                 'https://operations.osmfoundation.org/policies/nominatim/ '
@@ -114,11 +113,8 @@ class Nominatim(Geocoder):
                 'Please specify a custom `user_agent` with '
                 '`Nominatim(user_agent="my-application")` or by '
                 'overriding the default `user_agent`: '
-                '`geopy.geocoders.options.default_user_agent = "my-application"`. '
-                'In geopy 2.0 this will become an exception.'
-                % _DEFAULT_USER_AGENT,
-                DeprecationWarning,
-                stacklevel=2
+                '`geopy.geocoders.options.default_user_agent = "my-application"`.'
+                % _DEFAULT_USER_AGENT
             )
 
         self.api = "%s://%s%s" % (self.scheme, self.domain, self.geocode_path)
