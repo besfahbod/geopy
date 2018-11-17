@@ -33,7 +33,7 @@ def from_timezone_name(timezone_name, raw=None):
     return Timezone(pytz_timezone, raw)
 
 
-class Timezone(object):
+class Timezone:
     """
     Contains a parsed response for a timezone request, which is
     implemented in few geocoders which provide such lookups.
